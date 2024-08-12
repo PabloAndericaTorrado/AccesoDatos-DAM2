@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Entities">
+    <class name="Mascota" table="mascotas">
+        <id name="id" type="java.lang.Long">
+            <column name="idMascota" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="nombre" />
+        </property>
+        <property name="raza" type="java.lang.String">
+            <column name="raza" />
+        </property>
+        <many-to-one name="propietario" class="Propietario" fetch="select">
+            <column name="propietario_id" />
+        </many-to-one>
+        <many-to-one name="cuidador" class="Cuidador" fetch="select">
+            <column name="cuidador_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

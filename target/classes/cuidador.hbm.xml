@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="Entities">
+    <class name="Cuidador" table="cuidadores">
+        <id name="id" type="java.lang.Long">
+            <column name="cuidador_id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="java.lang.String">
+            <column name="nombre" />
+        </property>
+        <property name="apellidos" type="java.lang.String">
+            <column name="apellidos" />
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="telefono" />
+        </property>
+        <set name="mascotas" inverse="true" cascade="all">
+			<key>
+				<column name="cuidador_id"></column>
+			</key>
+			<one-to-many class="Entities.Mascota"/>
+		</set>
+    </class>
+</hibernate-mapping>
